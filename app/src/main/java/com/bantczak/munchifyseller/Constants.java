@@ -1,6 +1,11 @@
 package com.bantczak.munchifyseller;
 
-public class FirebaseConstants {
+public class Constants {
+
+    /**
+     * ----- FIREBASE CONSTANTS -----
+     * */
+
     /**
      * -> (sellers) -> {listof Seller}
      * id: H4t3y2c
@@ -8,15 +13,15 @@ public class FirebaseConstants {
      * getId()
      * getEmail()
      * */
-    public static final String SELLER_IDS = "sellers";
+    public static final String FIREBASE_SELLER_IDS = "sellers";
 
     /**
      * -> (all-postings) -> {listof Posting}
      * */
-    public static final String ALL_POSTINGS = "all-postings";
+    public static final String FIREBASE_ALL_POSTINGS = "all-postings";
 
     /**
      * -> (postings-by-seller) -> (seller-id) -> {listof Posting}
      * */
-    public static final String POSTINGS_BY_SELLER = "postings-by-seller";
+    public static final String FIREBASE_POSTINGS_BY_SELLER = "postings-by-seller";
 }
