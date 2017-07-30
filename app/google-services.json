@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "298621230249",
+    "firebase_url": "https://munchify-eeae3.firebaseio.com",
+    "project_id": "munchify-eeae3",
+    "storage_bucket": "munchify-eeae3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298621230249:android:1133eb3ee2c31da3",
+        "android_client_info": {
+          "package_name": "com.sm.munchify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298621230249-m39tddvlbuain1jfjpc98pokaqvc55kt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sm.munchify",
+            "certificate_hash": "c88fd7cee604beee07cb58edd764f94d081dbdce"
+          }
+        },
+        {
+          "client_id": "298621230249-gili9a0660jegp2amdupdch8155rqnl7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsoO3lyaNrrVl2qH_VTsM-Xs610RAAQu8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298621230249-gili9a0660jegp2amdupdch8155rqnl7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298621230249:android:89f699ed27e426ca",
+        "android_client_info": {
+          "package_name": "com.sm.munchifyseller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298621230249-616hs467m9eh5pq7ki8r2ehq3d6egifp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sm.munchifyseller",
+            "certificate_hash": "c88fd7cee604beee07cb58edd764f94d081dbdce"
+          }
+        },
+        {
+          "client_id": "298621230249-gili9a0660jegp2amdupdch8155rqnl7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsoO3lyaNrrVl2qH_VTsM-Xs610RAAQu8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298621230249-gili9a0660jegp2amdupdch8155rqnl7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298621230249:android:b673c3dd7a61bb19",
+        "android_client_info": {
+          "package_name": "com.bantczak.munchifyseller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298621230249-gili9a0660jegp2amdupdch8155rqnl7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsoO3lyaNrrVl2qH_VTsM-Xs610RAAQu8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
