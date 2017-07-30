@@ -41,11 +41,13 @@ public abstract class AbstractRoute implements RouteInterface {
 
     @Override
     public RouteInterface clearTop() {
-        return null;
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        return this;
     }
 
     @Override
     public RouteInterface newTask() {
-        return null;
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return this;
     }
 }

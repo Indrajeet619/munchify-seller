@@ -1,4 +1,4 @@
-package com.bantczak.munchifyseller;
+package com.bantczak.munchifyseller.util;
 
 public class Constants {
 
