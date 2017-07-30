@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         Log.d(TAG, "onCreate");
         // Setup UI.
-        setSupportActionBar(mActivityBinding.toolbar);
         mActivityBinding.createPostingFab.setOnClickListener(this);
     }
 

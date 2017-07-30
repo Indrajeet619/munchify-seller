@@ -29,9 +29,11 @@
 
         <!-- New Food Posting Activity -->
         <activity
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateVisible"
             android:name=".NewPostingActivity"
             android:label="@string/title_activity_new_posting"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
