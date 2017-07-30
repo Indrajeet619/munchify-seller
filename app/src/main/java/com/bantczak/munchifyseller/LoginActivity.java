@@ -33,11 +33,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Firebase auth
+        mAuth = FirebaseAuth.getInstance();
         Log.d(TAG, "onCreate");
         mLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
-        // Firebase auth
-        mAuth = FirebaseAuth.getInstance();
         // Firebase database
         //mDatabase = FirebaseDatabase.getInstance().getReference();
 
