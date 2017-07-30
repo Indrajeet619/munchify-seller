@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
         mLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
         // Firebase auth
@@ -55,10 +56,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * errors are presented and no actual login attempt is made.
      */
     private void validateLogin() {
-        /* if (mAuthTask != null) {
-            return;
-        } */
-
         // Reset errors.
         mLoginBinding.sellerEmail.setError(null);
         mLoginBinding.sellerPassword.setError(null);
@@ -131,7 +128,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void startMainActivity() {
         // Start the main activity
         new MainActivityRoute().go(this);
-        finish();
     }
 
     @Override
@@ -141,6 +137,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             startMainActivity();
+            finish();
         }
     }
 

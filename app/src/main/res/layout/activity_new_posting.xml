@@ -1,0 +1,113 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <!-- No data -->
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_horizontal_margin">
+
+                <!-- Posting Title -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/posting_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:hint="@string/posting_title"
+                        android:imeOptions="actionNext|flagNoExtractUi|flagNoFullscreen"
+                        android:inputType="textCapSentences|textNoSuggestions"
+                        android:longClickable="false"
+                        android:maxLines="1"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Old Price -->
+                    <EditText
+                        android:id="@+id/posting_old_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/old_price"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:scrollbars="none"
+                        android:textSize="16sp" />
+
+
+                    <!-- New Price -->
+                    <EditText
+                        android:id="@+id/posting_new_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/new_price"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:scrollbars="none"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <!-- bottom line -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#e2e2e2" />
+
+                <!-- Posting Description -->
+                <EditText
+                    android:id="@+id/posting_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:gravity="top|start"
+                    android:hint="@string/hint_description"
+                    android:imeOptions="actionSend|flagNoExtractUi|flagNoFullscreen"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:isScrollContainer="false"
+                    android:minLines="1"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="none"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/create_posting"/>
+    </FrameLayout>
+</layout>
