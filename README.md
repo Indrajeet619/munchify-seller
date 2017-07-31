@@ -1,5 +1,6 @@
 # MunchifySeller
-The app that tackles the food waste crisis in our world, one munch at a time!
+The app that tackles the food waste crisis in our world, one munch at a time!<br/>
+MunchifySeller allows local restaurants, grocery stores, and market places to prevent creating food waste while also increasing their revenue and becoming more known in their area.
 ## Tickets:
 *Note: logs regarding the ticket are shown in quotes.*
 
@@ -9,8 +10,9 @@ The app that tackles the food waste crisis in our world, one munch at a time!
 * **MUSE-2 (DONE):** Allow seller to create basic posting
 > Basic posting has no photo-taking option yet
 
-* **MUSE-3 (TODO):** Display list of all active postings in main activity
+* **MUSE-3 (DONE):** Display list of all active postings in main activity
+> Can click on list to retrieve info about the card. Future tickets will expand on this. List looks functional.
 
-* **MUSE-4 (TODO):** Browse camera options for app
+* **MUSE-4 (IN PROG):** Browse camera options for app
 
 * **MUSE-5 (TODO):** Store seller info in SharedPrefs and update them whenever someone else logs in > Requires finishing web admin code first

@@ -10,7 +10,9 @@ import com.bantczak.munchifyseller.model.FoodPosting;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
 
-public class PostingsAdapter extends FirebaseRecyclerAdapter<FoodPosting, FoodPostingViewHolder> implements FoodPostingViewHolder.FoodPostingListener {
+public class PostingsAdapter extends FirebaseRecyclerAdapter<FoodPosting, FoodPostingViewHolder>
+        implements FoodPostingViewHolder.FoodPostingListener {
+
     public interface PostingsAdapterListener {
         void onFoodPostingClicked(FoodPosting posting);
     }

@@ -7,13 +7,12 @@ import android.widget.TextView;
 
 import com.bantczak.munchifyseller.R;
 
-public class FoodPostingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class FoodPostingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public interface FoodPostingListener {
         void onItemClicked(int position);
     }
 
     private FoodPostingListener mListener;
-    private View mItemView;
 
     private ImageView foodPostingImage;
     private TextView foodPostingTitle, foodPostingPrice;
@@ -21,14 +20,13 @@ public class FoodPostingViewHolder extends RecyclerView.ViewHolder implements Vi
     public FoodPostingViewHolder(View itemView, FoodPostingListener listener) {
         super(itemView);
 
-        mItemView = itemView;
         mListener = listener;
 
         foodPostingImage = (ImageView) itemView.findViewById(R.id.food_posting_preview);
         foodPostingTitle = (TextView) itemView.findViewById(R.id.food_posting_title);
         foodPostingPrice = (TextView) itemView.findViewById(R.id.food_posting_price);
 
-        mItemView.setOnClickListener(this);
+        itemView.setOnClickListener(this);
     }
 
     /*
