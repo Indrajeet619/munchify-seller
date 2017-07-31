@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -51,7 +52,7 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.icon_close);
         }
-        // ...
+        mActivityBinding.uploadPostingButton.setOnClickListener(this);
     }
 
     @Override
@@ -66,8 +67,8 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
      */
     @Override
     public void saveData() {
-        showProgress(true);
         if (isInputValid()) {
+            showProgress(true);
             final String key = mDatabase.child(Constants.FIREBASE_ALL_POSTINGS).push().getKey();
             FoodPosting foodPosting = getFoodPostingFromInput(key);
             Map<String, Object> postValues = foodPosting.toMap();
@@ -89,6 +90,17 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
                     }
                 }
             });
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
