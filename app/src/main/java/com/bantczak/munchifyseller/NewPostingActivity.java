@@ -1,14 +1,13 @@
 package com.bantczak.munchifyseller;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -94,11 +93,24 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.new_posting, menu);
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
+            case R.id.add_photo:
+                // TODO create photo dialog (camera/gallery) ?
+                Intent intent= new Intent(this, CameraActivity.class);
+                startActivity(intent);
+                //takePhoto();
             default:
                 return super.onOptionsItemSelected(item);
         }

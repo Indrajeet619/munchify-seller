@@ -16,3 +16,5 @@ MunchifySeller allows local restaurants, grocery stores, and market places to pr
 * **MUSE-4 (IN PROG):** Browse camera options for app
 
 * **MUSE-5 (TODO):** Store seller info in SharedPrefs and update them whenever someone else logs in > Requires finishing web admin code first
+
+* **MUSE-6 (TODO):** Change main activity view to contain a fragment
