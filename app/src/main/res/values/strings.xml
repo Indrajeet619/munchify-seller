@@ -31,4 +31,5 @@
     <string name="old_price">Old Price</string>
     <string name="new_price">New Price</string>
     <string name="create_posting">Upload Posting</string>
+    <string name="preview_image">Image Preview</string>
 </resources>

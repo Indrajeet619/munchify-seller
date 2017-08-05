@@ -1,35 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <!-- The view that "crops" the camera view to be square -->
-    <FrameLayout
-        android:layout_gravity="bottom"
-        android:id="@+id/camera_cover_layout"
+    <data>
+        <!-- No Data -->
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/cardview_dark_background">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/take_picture_button"
-            android:layout_width="wrap_content"
+        <com.google.android.cameraview.CameraView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_margin="@dimen/activity_horizontal_margin" />
+            android:adjustViewBounds="true"
+            android:keepScreenOn="true"
+            app:aspectRatio="4:3"
+            app:autoFocus="true"
+            app:facing="back"
+            app:flash="auto" />
+
+        <!-- The View that stores the picture that was taken -->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/preview_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:contentDescription="@string/preview_image"/>
+
+        <!-- The view that "crops" the camera view to be square -->
+        <FrameLayout
+            android:id="@+id/camera_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#7d424242">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/take_picture_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:fabSize="normal" />
+
+        </FrameLayout>
 
     </FrameLayout>
-
-    <com.google.android.cameraview.CameraView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/camera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:keepScreenOn="true"
-        app:aspectRatio="1:1"
-        app:autoFocus="true"
-        app:facing="back"
-        app:flash="auto" />
-
-</FrameLayout>
+</layout>
