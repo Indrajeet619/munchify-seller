@@ -14,8 +14,11 @@ public class FoodPosting {
     public double newPrice; // newPrice must be <= oldPrice
     public String sellerId;
     public String sellerName;
+    // Include time of creation
+    // expiry time
 
     public FoodPosting() {
+        // Required for Firebase
     }
 
     public FoodPosting setOldPrice(double oldPrice) {

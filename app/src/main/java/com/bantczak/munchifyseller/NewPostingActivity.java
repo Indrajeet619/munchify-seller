@@ -51,6 +51,7 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.icon_close);
         }
+
         mActivityBinding.uploadPostingButton.setOnClickListener(this);
     }
 

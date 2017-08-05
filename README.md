@@ -13,8 +13,14 @@ MunchifySeller allows local restaurants, grocery stores, and market places to pr
 * **MUSE-3 (DONE):** Display list of all active postings in main activity
 > Can click on list to retrieve info about the card. Future tickets will expand on this. List looks functional.
 
-* **MUSE-4 (IN PROG):** Browse camera options for app
+* **MUSE-4 (IN PROG):** Browse camera options for app + implement selected camera view
+> Chose Google's cameraview library.
 
-* **MUSE-5 (TODO):** Store seller info in SharedPrefs and update them whenever someone else logs in > Requires finishing web admin code first
+* **MUSE-5 (TODO):** Allow user to upload posting with one photo
 
-* **MUSE-6 (TODO):** Change main activity view to contain a fragment
+* **MUSE-6 (TODO):** Store seller info in SharedPrefs and update them whenever someone else logs in 
+> Requires finishing web admin code first
+
+* **MUSE-7 (TODO):** Change main activity view to contain a fragment
+
+* **MUSE-8 (TODO):** Browse location APIs + GeoFire

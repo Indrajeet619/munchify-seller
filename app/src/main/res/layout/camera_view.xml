@@ -3,6 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- The view that "crops" the camera view to be square -->
+    <FrameLayout
+        android:layout_gravity="bottom"
+        android:id="@+id/camera_cover_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/take_picture_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="@dimen/activity_horizontal_margin" />
+
+    </FrameLayout>
+
     <com.google.android.cameraview.CameraView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/camera"
@@ -15,10 +32,4 @@
         app:facing="back"
         app:flash="auto" />
 
-    <!-- The view that "crops" the camera view to be square -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom"
-        android:background="@color/cardview_dark_background" />
 </FrameLayout>
