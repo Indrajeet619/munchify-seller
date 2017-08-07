@@ -15,7 +15,8 @@ MunchifySeller allows local restaurants, grocery stores, and market places to pr
 
 * **MUSE-4 (IN PROG):** Browse camera options for app + implement selected camera view
 > Chose Google's cameraview library.
-Allows users to post up to 6 pictures related to the posting
+
+* **MUSE-5 (TODO):** Allow user to take photo and view it in posting activity
 
 * **MUSE-6 (TODO):** Store seller info in SharedPrefs and update them whenever someone else logs in 
 > Requires finishing web admin code first
