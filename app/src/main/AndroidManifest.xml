@@ -4,6 +4,7 @@
     package="com.bantczak.munchifyseller">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -43,7 +44,7 @@
         <activity
             android:name=".CameraActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

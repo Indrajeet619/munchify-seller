@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bantczak.munchifyseller.databinding.ActivityMainBinding;
-import com.bantczak.munchifyseller.databinding.adapters.PostingsAdapter;
+import com.bantczak.munchifyseller.databinding.adapters.FoodPostingAdapter;
 import com.bantczak.munchifyseller.databinding.viewholders.FoodPostingViewHolder;
 import com.bantczak.munchifyseller.model.FoodPosting;
 import com.bantczak.munchifyseller.routes.NewPostingRoute;
@@ -18,7 +18,7 @@ import com.bantczak.munchifyseller.util.Constants;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, PostingsAdapter.PostingsAdapterListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, FoodPostingAdapter.PostingsAdapterListener {
     private String TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding mActivityBinding;
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // RecyclerView
         // TODO for MUSE-5
         Query query = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_POSTINGS_BY_SELLER).child("ABC123");
-        PostingsAdapter adapter = new PostingsAdapter(FoodPosting.class, R.layout.food_posting_item,FoodPostingViewHolder.class, query, this);
+        FoodPostingAdapter adapter = new FoodPostingAdapter(FoodPosting.class, R.layout.food_posting_item,FoodPostingViewHolder.class, query, this);
         mActivityBinding.foodPostingRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mActivityBinding.foodPostingRecyclerview.setAdapter(adapter);
     }

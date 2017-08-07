@@ -10,7 +10,7 @@ import com.bantczak.munchifyseller.model.FoodPosting;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
 
-public class PostingsAdapter extends FirebaseRecyclerAdapter<FoodPosting, FoodPostingViewHolder>
+public class FoodPostingAdapter extends FirebaseRecyclerAdapter<FoodPosting, FoodPostingViewHolder>
         implements FoodPostingViewHolder.FoodPostingListener {
 
     public interface PostingsAdapterListener {
@@ -19,11 +19,11 @@ public class PostingsAdapter extends FirebaseRecyclerAdapter<FoodPosting, FoodPo
 
     private PostingsAdapterListener mListener;
 
-    public PostingsAdapter(Class<FoodPosting> modelClass,
-                           int modelLayout,
-                           Class<FoodPostingViewHolder> viewHolderClass,
-                           Query ref,
-                           PostingsAdapterListener listener) {
+    public FoodPostingAdapter(Class<FoodPosting> modelClass,
+                              int modelLayout,
+                              Class<FoodPostingViewHolder> viewHolderClass,
+                              Query ref,
+                              PostingsAdapterListener listener) {
         super(modelClass, modelLayout, viewHolderClass, ref);
         mListener = listener;
     }

@@ -4,9 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -16,6 +20,7 @@ import com.google.android.cameraview.CameraView;
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = CameraActivity.class.getSimpleName();
     private CameraViewBinding mCameraViewBinding;
+    private Handler mBackgroundHandler;
 
     CameraView.Callback mCallback = new CameraView.Callback() {
         @Override
@@ -28,6 +33,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         public void onPictureTaken(CameraView cameraView, byte[] data) {
             // preview image in image view
             Bitmap preview = BitmapFactory.decodeByteArray(data, 0, data.length);
+
             mCameraViewBinding.previewImage.setImageBitmap(preview);
             showPreviewImageLayout(true);
         }
@@ -59,12 +65,34 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         mCameraViewBinding = DataBindingUtil.setContentView(this, R.layout.camera_view);
 
+        setUI();
+    }
+
+    private void setUI() {
         mCameraViewBinding.camera.addCallback(mCallback);
         mCameraViewBinding.takePictureButton.setOnClickListener(this);
         mCameraViewBinding.cancelBtn.setOnClickListener(this);
         mCameraViewBinding.checkBtn.setOnClickListener(this);
 
         showPreviewImageLayout(false);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("Take Photo");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.icon_close);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -77,11 +105,14 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         int previewWidth = displayMetrics.widthPixels;
         int previewHeight = displayMetrics.heightPixels;
 
-        //ViewGroup.LayoutParams layoutParams = mCameraViewBinding.previewImage.getLayoutParams();
-
         // Set the height of the overlay so that it makes the preview a square
         FrameLayout.LayoutParams overlayParams = (FrameLayout.LayoutParams) mCameraViewBinding.cameraOverlay.getLayoutParams();
-        overlayParams.height = previewHeight - previewWidth;
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            overlayParams.height = previewHeight - previewWidth - actionBar.getHeight();
+        } else {
+            overlayParams.height = previewHeight - previewWidth;
+        }
         Log.d(TAG, "Height: " + overlayParams.height);
         Log.d(TAG, "Width: " + overlayParams.width);
         mCameraViewBinding.cameraOverlay.setLayoutParams(overlayParams);
@@ -91,6 +122,15 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     protected void onResume() {
         super.onStart();
         mCameraViewBinding.camera.start();
+    }
+
+    private Handler getBackgroundHandler() {
+        if (mBackgroundHandler == null) {
+            HandlerThread thread = new HandlerThread("background");
+            thread.start();
+            mBackgroundHandler = new Handler(thread.getLooper());
+        }
+        return mBackgroundHandler;
     }
 
     @Override

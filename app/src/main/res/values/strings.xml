@@ -32,4 +32,5 @@
     <string name="new_price">New Price</string>
     <string name="create_posting">Upload Posting</string>
     <string name="preview_image">Image Preview</string>
+    <string name="camera_permission_not_granted">Camera permission was not granted.</string>
 </resources>

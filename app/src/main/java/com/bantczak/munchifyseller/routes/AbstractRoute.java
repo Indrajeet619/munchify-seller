@@ -3,6 +3,7 @@ package com.bantczak.munchifyseller.routes;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 
 public abstract class AbstractRoute implements RouteInterface {
     protected Intent mIntent;
@@ -28,6 +29,25 @@ public abstract class AbstractRoute implements RouteInterface {
         }
     }
 
+    /**
+     * This is only useful if startActivityForResult is needed, such that
+     * the fragment is registered to receive the result. Otherwise just use
+     * the go(Context) version above.
+     */
+    public void go(final Fragment fromFragment) {
+        if (getClassName() != null) {
+            mIntent.setClass(fromFragment.getContext(), getClassName());
+        }
+
+        if (mRequestCode != 0) {
+            fromFragment.startActivityForResult(mIntent, mRequestCode);
+        } else {
+            /** Start activity from context must use new task flag */
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            fromFragment.startActivity(mIntent);
+        }
+    }
+
     protected abstract Class<?> getClassName();
 
     protected void setAction() {
@@ -48,6 +68,11 @@ public abstract class AbstractRoute implements RouteInterface {
     @Override
     public RouteInterface newTask() {
         mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return this;
+    }
+
+    public AbstractRoute forResult(final int requestCode) {
+        this.mRequestCode = requestCode;
         return this;
     }
 }

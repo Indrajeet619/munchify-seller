@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -14,7 +15,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.bantczak.munchifyseller.databinding.ActivityNewPostingBinding;
+import com.bantczak.munchifyseller.fragments.AttachmentsFragment;
 import com.bantczak.munchifyseller.model.FoodPosting;
+import com.bantczak.munchifyseller.routes.CameraViewRoute;
 import com.bantczak.munchifyseller.util.Constants;
 import com.bantczak.munchifyseller.util.DataPersister;
 import com.bantczak.munchifyseller.util.MessageDialog;
@@ -53,6 +56,14 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
         }
 
         mActivityBinding.uploadPostingButton.setOnClickListener(this);
+
+        // Add the attachments fragment
+        AttachmentsFragment attachmentsFragment = AttachmentsFragment.newInstance();
+
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction()
+                .replace(R.id.image_attachments, attachmentsFragment)
+                .commit();
     }
 
     @Override
@@ -94,6 +105,11 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.new_posting, menu);
@@ -107,11 +123,7 @@ public class NewPostingActivity extends AppCompatActivity implements View.OnClic
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.add_photo:
-                // TODO create photo dialog (camera/gallery) ?
-                Intent intent= new Intent(this, CameraActivity.class);
-                startActivity(intent);
-                //takePhoto();
+
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -14,6 +14,7 @@ public class FoodPosting {
     public double newPrice; // newPrice must be <= oldPrice
     public String sellerId;
     public String sellerName;
+//    public String imageURL;
     // Include time of creation
     // expiry time
 
