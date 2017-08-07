@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.bantczak.munchifyseller.databinding.CameraViewBinding;
@@ -30,7 +29,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             // preview image in image view
             Bitmap preview = BitmapFactory.decodeByteArray(data, 0, data.length);
             mCameraViewBinding.previewImage.setImageBitmap(preview);
-            mCameraViewBinding.previewImage.setVisibility(View.VISIBLE);
+            showPreviewImageLayout(true);
         }
 
         @Override
@@ -40,6 +39,21 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         }
     };
 
+    // Show the check/cancel buttons when previewing an image
+    private void showPreviewImageLayout(boolean show) {
+        int viewType;
+        if (show) {
+            viewType = View.VISIBLE;
+        } else {
+            viewType = View.GONE;
+        }
+        mCameraViewBinding.previewImage.setVisibility(viewType);
+        mCameraViewBinding.cancelBtn.setVisibility(viewType);
+        mCameraViewBinding.checkBtn.setVisibility(viewType);
+        mCameraViewBinding.takePictureButton.setVisibility(viewType == View.GONE ? View.VISIBLE : View.GONE);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,15 +61,12 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
         mCameraViewBinding.camera.addCallback(mCallback);
         mCameraViewBinding.takePictureButton.setOnClickListener(this);
+        mCameraViewBinding.cancelBtn.setOnClickListener(this);
+        mCameraViewBinding.checkBtn.setOnClickListener(this);
 
-      //  setCameraUI();
+        showPreviewImageLayout(false);
     }
-/*
-    private void setCameraUI() {
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        displayMetrics.
-    }
-*/
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -92,6 +103,10 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         if (v == mCameraViewBinding.takePictureButton) {
             mCameraViewBinding.camera.takePicture();
+        } else if (v == mCameraViewBinding.cancelBtn) {
+            showPreviewImageLayout(false);
+        } else if (v == mCameraViewBinding.checkBtn) {
+            // TODO: Save image as a preview in the previous activity
         }
     }
 }

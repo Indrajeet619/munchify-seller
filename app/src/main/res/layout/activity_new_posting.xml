@@ -20,6 +20,12 @@
                 android:orientation="vertical"
                 android:padding="@dimen/activity_horizontal_margin">
 
+                <!-- Image attachments -->
+                <FrameLayout
+                    android:id="@+id/image_attachments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <!-- Posting Title -->
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -51,9 +57,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/old_price"
+                        android:imeOptions="actionNext"
                         android:inputType="numberDecimal"
                         android:maxLines="1"
-                        android:imeOptions="actionNext"
                         android:scrollHorizontally="true"
                         android:scrollbars="none"
                         android:textSize="16sp" />
@@ -98,6 +104,7 @@
                     android:minLines="1"
                     android:scrollHorizontally="false"
                     android:scrollbars="none"
+                    android:textColor="@color/descriptionGray"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -106,10 +113,10 @@
 
         <Button
             android:id="@+id/upload_posting_button"
-            android:layout_margin="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="@string/create_posting"/>
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/create_posting" />
     </FrameLayout>
 </layout>

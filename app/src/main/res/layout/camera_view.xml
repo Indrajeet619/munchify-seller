@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- The actual camera -->
         <com.google.android.cameraview.CameraView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/camera"
@@ -21,13 +22,15 @@
             app:facing="back"
             app:flash="auto" />
 
-        <!-- The View that stores the picture that was taken -->
+        <!-- The View that stores the picture that was taken (looks like fitStart works best!) -->
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/preview_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/preview_image"
             android:gravity="top"
-            android:contentDescription="@string/preview_image"/>
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
         <!-- The view that "crops" the camera view to be square -->
         <FrameLayout
@@ -35,19 +38,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="#7d424242">
+            android:background="#FFFFFF">
 
-            <android.support.design.widget.FloatingActionButton
+            <!-- Cancel Button -->
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/cancel_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:scaleType="fitXY"
+                android:src="@drawable/cancel_circle" />
+
+            <!-- Take picture button -->
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/take_picture_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/activity_horizontal_margin"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                app:fabSize="normal" />
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_snap_picture" />
+
+            <!-- Check button -->
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/check_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:scaleType="fitXY"
+                android:src="@drawable/check_circle" />
 
         </FrameLayout>
-
     </FrameLayout>
 </layout>
