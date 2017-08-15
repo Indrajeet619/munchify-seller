@@ -24,4 +24,9 @@ public class Constants {
      * -> (postings-by-seller) -> (seller-id) -> {listof Posting}
      * */
     public static final String FIREBASE_POSTINGS_BY_SELLER = "postings-by-seller";
+
+    /**
+     * ------ FILE CONSTANTS FOR LOCAL STORAGE ------
+     * */
+    public static final String CACHE_TEMP_IMAGES_FILE = "tempImages";
 }

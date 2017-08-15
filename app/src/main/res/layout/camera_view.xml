@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/preview_image"
-            android:gravity="top"
+            android:layout_gravity="top"
             android:scaleType="fitStart"
             app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 

@@ -2,6 +2,7 @@ package com.bantczak.munchifyseller.databinding.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +10,21 @@ import android.view.ViewGroup;
 import com.bantczak.munchifyseller.R;
 import com.bantczak.munchifyseller.databinding.viewholders.ImageAttachmentViewHolder;
 
+import java.io.File;
 import java.util.List;
 
 public class ImageAttachmentAdapter extends RecyclerView.Adapter<ImageAttachmentViewHolder> {
-    private List<String> mImageUrls;
+    private List<File> mFiles;
     private Context mContext;
+   // private File[] mFiles2;
 
-    public ImageAttachmentAdapter(List<String> imageUrls, Context context) {
-        this.mImageUrls = imageUrls;
+    public ImageAttachmentAdapter(List<File> cacheFiles, Context context) {
+        this.mFiles = cacheFiles;
         mContext = context;
+        for (File file : cacheFiles) {
+            Log.d("Adapter", file.getName());
+        }
+        // this.mFiles2 = context.getCacheDir().listFiles(this);
     }
 
     @Override
@@ -28,11 +35,19 @@ public class ImageAttachmentAdapter extends RecyclerView.Adapter<ImageAttachment
 
     @Override
     public void onBindViewHolder(ImageAttachmentViewHolder holder, int position) {
-        holder.setImageView(mImageUrls.get(position));
+        holder.setImageView(mFiles.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mImageUrls.size();
+        Log.d("Adapter", "getItemCount: " + mFiles.size());
+        for (File file : mFiles) {
+            Log.d("Adapter", file.getName());
+        }
+        return mFiles.size();
+    }
+
+    public void updateList(List<File> files) {
+        this.mFiles = files;
     }
 }

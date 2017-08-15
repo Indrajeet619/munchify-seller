@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.bantczak.munchifyseller.databinding.ActivityNewPostingBinding;
 import com.bantczak.munchifyseller.fragments.AttachmentsFragment;
 import com.bantczak.munchifyseller.model.FoodPosting;
-import com.bantczak.munchifyseller.routes.CameraViewRoute;
 import com.bantczak.munchifyseller.util.Constants;
 import com.bantczak.munchifyseller.util.DataPersister;
 import com.bantczak.munchifyseller.util.MessageDialog;

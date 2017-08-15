@@ -1,5 +1,6 @@
 package com.bantczak.munchifyseller;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,14 +14,21 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.bantczak.munchifyseller.databinding.CameraViewBinding;
+import com.bantczak.munchifyseller.fragments.AttachmentsFragment;
+import com.bantczak.munchifyseller.util.CacheManager;
 import com.google.android.cameraview.CameraView;
+
+import java.io.IOException;
 
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = CameraActivity.class.getSimpleName();
     private CameraViewBinding mCameraViewBinding;
     private Handler mBackgroundHandler;
+    public static long fileNameCount = 0;
+    private byte[] mCurrentImage;
 
     CameraView.Callback mCallback = new CameraView.Callback() {
         @Override
@@ -33,8 +41,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         public void onPictureTaken(CameraView cameraView, byte[] data) {
             // preview image in image view
             Bitmap preview = BitmapFactory.decodeByteArray(data, 0, data.length);
-
             mCameraViewBinding.previewImage.setImageBitmap(preview);
+            mCurrentImage = data;
             showPreviewImageLayout(true);
         }
 
@@ -53,6 +61,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         } else {
             viewType = View.GONE;
         }
+
+        //File.createTempFile("posting_images", "png", get);
         mCameraViewBinding.previewImage.setVisibility(viewType);
         mCameraViewBinding.cancelBtn.setVisibility(viewType);
         mCameraViewBinding.checkBtn.setVisibility(viewType);
@@ -89,6 +99,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                Log.d(TAG, "clicked on home");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -124,6 +135,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         mCameraViewBinding.camera.start();
     }
 
+    // TODO look up if we need a new handler (static handler?)
     private Handler getBackgroundHandler() {
         if (mBackgroundHandler == null) {
             HandlerThread thread = new HandlerThread("background");
@@ -145,8 +157,39 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             mCameraViewBinding.camera.takePicture();
         } else if (v == mCameraViewBinding.cancelBtn) {
             showPreviewImageLayout(false);
+            mCurrentImage = null;
         } else if (v == mCameraViewBinding.checkBtn) {
+            saveImageLocally();
             // TODO: Save image as a preview in the previous activity
         }
+    }
+
+    /**
+     * Saves the image to the local cache to allow the attachment adapter to read it
+     */
+    private void saveImageLocally() {
+        if (mCurrentImage != null) {
+            getBackgroundHandler().post(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        final String fileName = "picture" + fileNameCount + ".jpg";
+                        CacheManager.cacheData(CameraActivity.this, mCurrentImage, fileName);
+                        fileNameCount++;
+                        Intent result = new Intent();
+                        result.putExtra(AttachmentsFragment.EXTRA_FILENAME, fileName);
+                        setResult(RESULT_OK, result);
+                        finish();
+                    } catch (IOException e) {
+                        makeToast("Unable to process image.");
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
+
+    private void makeToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
